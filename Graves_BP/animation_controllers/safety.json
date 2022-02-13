@@ -1,0 +1,53 @@
+{
+   "format_version" : "1.10.0",
+   "animation_controllers" : {
+      "controller.animation.grave.safety" : {
+         "initial_state" : "default",
+         "states" : {
+           "default": {
+             "animations": [ "collect" ],
+             "transitions": [
+               { "move1": "query.is_in_water" },
+               { "move1": "query.is_shaking" }
+             ],
+             "blend_transition": 0.2
+           },
+
+           "move1": {
+             "on_entry": [
+               "/tp @s ~ ~+1 ~"
+             ],
+             "animations": [ "collect" ],
+             "transitions": [
+               { "move2": "!query.is_breathing" },
+               { "move2": "query.is_shaking" },
+               { "make_platform": "!query.is_in_water" },
+               { "make_platform": "!query.is_shaking" }
+             ],
+             "blend_transition": 0.2
+           },
+           "move2": {
+             "on_entry": [
+               "/tp @s ~ ~+1 ~"
+             ],
+             "animations": [ "collect" ],
+             "transitions": [
+               { "move1": "query.is_in_water" },
+               { "move1": "query.is_shaking" },
+               { "make_platform": "!query.is_in_water" },
+               { "make_platform": "!query.is_shaking" }
+             ],
+             "blend_transition": 0.2
+           },
+           "make_platform": {
+             "animations": [ "collect" ],
+             "on_entry": [
+               "/tp @s ~ ~+1 ~",
+               "/fill ~-2 ~-1 ~-2 ~+2 ~-1 ~+2 minecraft:dirt 0 destroy",
+               "/tp @s ~ ~+3 ~"
+             ]
+           }
+         }
+      }
+   }
+}

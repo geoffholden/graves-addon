@@ -4,8 +4,7 @@
        "animation.collect":{
           "timeline":{
              "0.04":[
-                "/tp @e[type=item,r=7.5] ~ ~ ~",
-                "/function graves/lineup"
+                "/tp @e[type=item,r=7.5] ~ ~+1 ~"
              ]
           },
           "animation_length":0.05,
